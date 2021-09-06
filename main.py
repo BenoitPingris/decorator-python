@@ -33,37 +33,46 @@ def logit(func):
 
 N=10_000_000
 
-# Function with no decorator
+## Function with no decorator
+
 def some_fn():
     for _ in range(N):
         pass
 
-# Function with 1 simple decorator
-# @time
+
+## Function with 1 simple decorator
+
+# @timeit
 # def some_fn():
 #     for _ in range(N):
 #         pass
 
-# Function with 1 parametable decorator
+# some_fn_dec = timeit(some_fn)
+
+## Function with 1 parametable decorator
+
 # @timeit_range(10)
 # def some_fn():
 #     for _ in range(N):
 #         pass
 
-# Function with 1 simple decorator
+## Function with 1 simple decorator
+
 # @logit
 # def some_fn():
 #     for _ in range(N):
 #         pass
 
-# Function with 2 decorators
+## Function with 2 decorators
+
 # @logit
 # @timeit_range(10)
 # def some_fn():
 #     for _ in range(N):
 #         pass
 
-# Function with 2 decorators, in another order
+## Function with 2 decorators, in another order
+
 # @timeit_range(10)
 # @logit
 # def some_fn():
