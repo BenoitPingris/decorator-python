@@ -1,3 +1,5 @@
+# Function decorator
+
 import time
 
 
@@ -35,9 +37,9 @@ N=10_000_000
 
 ## Function with no decorator
 
-def some_fn():
-    for _ in range(N):
-        pass
+# def some_fn():
+#     for _ in range(N):
+#         pass
 
 
 ## Function with 1 simple decorator
@@ -47,7 +49,7 @@ def some_fn():
 #     for _ in range(N):
 #         pass
 
-# some_fn_dec = timeit(some_fn)
+# some_fn = timeit(some_fn)
 
 ## Function with 1 parametable decorator
 
@@ -73,10 +75,44 @@ def some_fn():
 
 ## Function with 2 decorators, in another order
 
-# @timeit_range(10)
-# @logit
-# def some_fn():
-#     for _ in range(N):
-#         pass
+# @try_except(3)
+@logit
+def some_fn():
+    for _ in range(N):
+        pass
 
 some_fn()
+
+
+# Class decorator
+import random
+
+def class_dec(cls):
+    class DecoratedClass(cls):
+        def __init__(self, *a, **kw):
+            super(DecoratedClass, self).__init__(*a, **kw)
+            self.__id = random.randint(0, 100)
+        
+        def custom_fn(self):
+            print(f"the id is '{self.__id}'")
+    return DecoratedClass
+
+@class_dec
+class FooBar:
+    pass
+
+foobar = FooBar()
+foobar.custom_fn()
+
+from dataclasses import dataclass
+# Two ways to create a class that only stores data
+
+@dataclass
+class A:
+    foo: int
+    bar: str
+
+class B:
+    def __init__(self, foo: int, bar: str) -> None:
+        self.foo = foo
+        self.bar = bar
