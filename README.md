@@ -6,7 +6,7 @@ syntax:
 ```python
 @decorator
 def my_function(n: int):
-    print("odd" if n % 2 == 0 else "even")
+    print("even" if n % 2 == 0 else "odd")
 ```
 
 `decorator` is a function with the following body:
