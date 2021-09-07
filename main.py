@@ -100,6 +100,7 @@ def class_dec(cls):
 @class_dec
 class FooBar:
     pass
+# Our FooBar class now has a `custom_fn` method and a `__id` property
 
 foobar = FooBar()
 foobar.custom_fn()
